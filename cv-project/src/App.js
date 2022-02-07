@@ -1,13 +1,11 @@
 import React, {Component} from "react";
-import UserInfo from './UserInfo';
+import UserInfo from './components/UserInfo';
 
 class App extends Component {
+
   render() {
     return (
-      <div className="App">
-  
         <UserInfo />
-      </div>
     );
   }
 
