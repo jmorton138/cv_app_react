@@ -1,45 +1,26 @@
 import React, { Component } from "react";
 
 class UserInfo extends Component {
-    constructor() {
-        super()
-        this.state = {
-            info: {
-                name: '',
-                email: '',
-            },
-        };
-        this.handleChange = this.handleChange.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
 
-        
-    }
-
-    handleChange = (e) => {
-        this.setState({
-            info: {
-                ...this.state.info,
-                [e.target.name]: e.target.value,
-            
-            }
-        });
-    };
-
-    handleSubmit = (e) => {
-        e.preventDefault();
-        console.log(this.state.info);
-
-    };
 
     render() {
         return (
             <div>
-                <form onSubmit={this.handleSubmit}>
+                <div>
+                    <label htmlFor="nameInput">Name</label>
+                    <input type="text" onChange={this.props.handleChange}  id="nameInput" name="name"></input>
+                </div>
 
-                    <input type="text" onChange={this.handleChange} value={this.state.info.name} id="nameInput" name="name"></input>
-                    <input type="email" onChange={this.handleChange} value={this.state.info.email} id="emailInput" name="email"></input>
-                    <input type="submit"></input>
-                </form>
+                <div>
+                    <label htmlFor="emailInput">Email</label>
+                    <input type="email" onChange={this.props.handleChange}  id="emailInput" name="email"></input>
+                </div>
+ 
+                <div>
+                    <label htmlFor="phoneInput">Phone</label>
+                    <input type="tel" onChange={this.props.handleChange} id="phoneInput" name="phone"></input>
+                </div>
+
             </div>
         );
     }
