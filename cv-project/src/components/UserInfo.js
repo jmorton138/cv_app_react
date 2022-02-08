@@ -8,7 +8,7 @@ class UserInfo extends Component {
             <div>
                 <div>
                     <label htmlFor="nameInput">Name</label>
-                    <input type="text" onChange={this.props.handleChange}  id="nameInput" name="name"></input>
+                    <input type="text" onChange={this.props.handleChange}  id="nameInput" name="name" value={this.props.info.name}></input>
                 </div>
 
                 <div>

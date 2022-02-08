@@ -20,6 +20,7 @@ class App extends Component {
             workdate: '',
             },
             isSubmitted: false,
+            displayEdit: false,
 
     };
 
@@ -39,21 +40,28 @@ class App extends Component {
   handleSubmit = (e) => {
     e.preventDefault();
     this.setState({isSubmitted: true})
-    console.log(this.state);
 
   };
+
+  displayEditView = (e) => {
+    this.setState({
+      displayEdit: !this.state.displayEdit,
+      isSubmitted: !this.state.isSubmitted
+    })
+    console.log('edit');
+  }
 
   render() {
     let content;
     const isSubmitted = this.state.isSubmitted;
 
     if (isSubmitted) {
-      content = <Resume info={this.state.info} />
+      content = <Resume info={this.state.info} displayEditView={this.displayEditView}/>
     }
     else {
       content = (
         <form onSubmit={this.handleSubmit}>
-          <UserInfo handleChange={this.handleChange} />
+          <UserInfo handleChange={this.handleChange} info={this.state.info}/>
           <EduInfo handleChange={this.handleChange} />
           <Experience handleChange={this.handleChange} />
           <input type="submit"></input>

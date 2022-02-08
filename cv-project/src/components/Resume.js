@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
+import UserInfo from './UserInfo';
 
 export default class Resume extends Component {
-  render() {
+  
+    render() {
     return (
         <div>
             <div>
@@ -33,7 +35,7 @@ export default class Resume extends Component {
                 <label htmlFor="schooldate">School Date</label>
                 <div name="schooldate">{this.props.info.schooldate}</div>
             </div>
-
+            <button onClick={this.props.displayEditView}>Edit</button>
         </div>
     );
   }
