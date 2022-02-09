@@ -3,8 +3,8 @@ import React, { Component } from 'react';
 class EditEduForm extends Component {
     state = {
         school: this.props.education.school,
-        major: '',
-        startdate: '',
+        major: this.props.education.major,
+        startdate: this.props.education.startdate,
         id: this.props.education.id,
     }
 
@@ -25,11 +25,11 @@ class EditEduForm extends Component {
                 </div>
                 <div className="field">
                     <label htmlFor="majorInput">Area of Study</label>
-                    <input type="text" id="majorInput" onChange={this.props.handleChange} name="major" value={this.props.education.major} />
+                    <input type="text" id="majorInput" onChange={this.handleChange} name="major" value={this.state.major} />
                 </div>
                 <div className="field">
                     <label htmlFor="dateStudyInput">Date of Study</label>
-                    <input type="date" id="dateStudyInput" onChange={this.props.handleChange} name="startdate" value={this.props.education.startdate} />
+                    <input type="date" id="dateStudyInput" onChange={this.handleChange} name="startdate" value={this.state.startdate} />
                 </div>
                 <button onClick={(e) => this.props.editEducation(e, this.state)}>Save</button>
             </div>
