@@ -5,6 +5,8 @@ import Experience from "./components/Experience";
 import Resume from "./components/Resume";
 import './App.css'
 import uuid from 'uuid';
+import AddEdu from "./components/AddEdu";
+import Education from "./components/Education";
 
 class App extends Component {
   constructor() {
@@ -28,10 +30,14 @@ class App extends Component {
       isSubmitted: false,
       education: [...this.state.education, obj]
     })
-    console.log(this.state.education);
+  }
+  newEducation = (e) => {
+    e.preventDefault();
   }
 
   handleChange = (e) => {
+    console.log(this.state);
+
     this.setState({
           ...this.state.info,
           [e.target.name]: e.target.value,
@@ -52,6 +58,7 @@ class App extends Component {
     console.log('edit');
   }
 
+
   render() {
     let content;
     const isSubmitted = this.state.isSubmitted;
@@ -63,7 +70,8 @@ class App extends Component {
       content = (
         <form onSubmit={this.handleSubmit}>
           <UserInfo handleChange={this.handleChange} info={this.state}/>
-          <EduInfo handleChange={this.handleChange} addEducation={this.addEducation}/>
+          <Education education={this.state.education} addEducation={this.addEducation} />
+          {/*<AddEdu newEducation={this.newEducation}/> */}
           {/* <Experience handleChange={this.handleChange} /> */}
           <div>
             <input type="submit"></input>
