@@ -100,7 +100,7 @@ class App extends Component {
     if (isSubmitted && !displayEdit) {
       content = <Resume info={this.state} displayEditView={this.displayEditView}/>
     } else if (displayEdit) {
-      content = <EditResume info={this.state} handleChange={this.handleChange} handleSubmit={this.handleSubmit} editEducation ={this.editEducation}/>
+      content = <EditResume info={this.state} handleChange={this.handleChange} handleSubmit={this.handleSubmit} editEducation ={this.editEducation} />
     } else {
       content = (
         <form onSubmit={this.handleSubmit}>

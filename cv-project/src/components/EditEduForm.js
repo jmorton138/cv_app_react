@@ -32,6 +32,7 @@ class EditEduForm extends Component {
                     <input type="date" id="dateStudyInput" onChange={this.handleChange} name="startdate" value={this.state.startdate} />
                 </div>
                 <button onClick={(e) => this.props.editEducation(e, this.state)}>Save</button>
+                
             </div>
         )
     }

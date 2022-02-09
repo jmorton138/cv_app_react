@@ -4,7 +4,7 @@ class AddEduForm extends Component {
   render() {
     return (
     <div>
-        <button onClick={(e) => this.props.newEduForm(e)}>{this.props.text}</button>
+        <button onClick={(e) => this.props.newEduForm(e)}>Add</button>
     </div>
     )
   }

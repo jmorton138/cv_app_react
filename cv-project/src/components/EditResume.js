@@ -3,6 +3,7 @@ import EducationForms from './EducationForms';
 import UserInfo from './UserInfo';
 import EduInfoForm from './EduInfoForm';
 import EditEduForm from './EditEduForm';
+import AddEduForm from './AddEduForm';
 
 class EditResume extends Component {
   render() {
@@ -15,8 +16,9 @@ class EditResume extends Component {
             <form onSubmit={this.props.handleSubmit}>
               <UserInfo handleChange={this.props.handleChange} info={this.props.info} />
               {eduinfoforms}
-              <input type="submit"></input>
-
+              <div className="button-container">
+            <input type="submit"></input>
+          </div>
             </form>
         </div>
     )
