@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-class EduInfo extends Component {
+class EduInfoForm extends Component {
     state = {
         school: '',
         major: '',
@@ -35,4 +35,4 @@ class EduInfo extends Component {
     }
 }
 
-export default EduInfo;
+export default EduInfoForm;

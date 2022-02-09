@@ -1,11 +1,11 @@
 import React, {Component} from "react";
 import UserInfo from './components/UserInfo';
-import EduInfo from "./components/EduInfo";
+import EduInfoForm from "./components/EduInfoForm";
 import Experience from "./components/Experience";
 import Resume from "./components/Resume";
 import './App.css'
 import uuid from 'uuid';
-import AddEdu from "./components/AddEdu";
+import AddEduForm from "./components/AddEduForm";
 import Education from "./components/Education";
 
 class App extends Component {
@@ -18,7 +18,7 @@ class App extends Component {
           education: [],
           experience: [],
           isSubmitted: false,
-          displayEdit: false,
+          
 
     }
     
@@ -31,9 +31,8 @@ class App extends Component {
       education: [...this.state.education, obj]
     })
   }
-  newEducation = (e) => {
-    e.preventDefault();
-  }
+
+  
 
   handleChange = (e) => {
     console.log(this.state);
@@ -71,8 +70,9 @@ class App extends Component {
         <form onSubmit={this.handleSubmit}>
           <UserInfo handleChange={this.handleChange} info={this.state}/>
           <Education education={this.state.education} addEducation={this.addEducation} />
-          {/*<AddEdu newEducation={this.newEducation}/> */}
-          {/* <Experience handleChange={this.handleChange} /> */}
+          {/* <EduInfo addEducation={this.addEducation}/> */}
+
+
           <div>
             <input type="submit"></input>
 
