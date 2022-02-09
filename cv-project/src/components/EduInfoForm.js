@@ -9,7 +9,6 @@ class EduInfoForm extends Component {
     }
 
     handleChange = (e) => {
-        console.log(this.state.id)
         this.setState(() => ({ 
             ...this.state,
             [e.target.name]: e.target.value,

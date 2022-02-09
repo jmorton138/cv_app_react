@@ -51,8 +51,17 @@ class App extends Component {
     });
   };
 
-  editEducation = (e, obj, edu) => {
+  editEducation = (e, obj) => {
     e.preventDefault();
+    const id = obj.id;
+    let list = this.state.education;
+    let key = list[obj.id];
+    list[id] = obj;
+    this.setState({
+      education: list,
+    })
+    console.log(this.state);
+
   
 
 
@@ -100,9 +109,8 @@ class App extends Component {
           {eduform}
 
 
-          <div>
+          <div className="button-container">
             <input type="submit"></input>
-
           </div>
         </form>
       );

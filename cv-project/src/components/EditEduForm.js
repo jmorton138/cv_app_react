@@ -9,6 +9,7 @@ class EditEduForm extends Component {
     }
 
     handleChange = (e) => {
+        console.log(this.state.id);
         this.setState(() => ({ 
             ...this.state,
             [e.target.name]: e.target.value,
@@ -30,7 +31,7 @@ class EditEduForm extends Component {
                     <label htmlFor="dateStudyInput">Date of Study</label>
                     <input type="date" id="dateStudyInput" onChange={this.props.handleChange} name="startdate" value={this.props.education.startdate} />
                 </div>
-                <button onClick={(e) => this.props.editEducation(e, this.props.education, this.state)}>Save</button>
+                <button onClick={(e) => this.props.editEducation(e, this.state)}>Save</button>
             </div>
         )
     }
