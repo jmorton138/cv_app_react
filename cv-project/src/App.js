@@ -8,6 +8,7 @@ import uuid from 'uuid';
 import AddEduForm from "./components/AddEduForm";
 import EducationForms from "./components/EducationForms";
 import EducationList from "./components/EducationList";
+import EditResume from "./components/EditResume";
 
 class App extends Component {
   constructor() {
@@ -19,6 +20,7 @@ class App extends Component {
           education: [],
           experience: [],
           isSubmitted: false,
+          displayEdit: false,
           renderEduForm: false,
 
     }
@@ -42,22 +44,33 @@ class App extends Component {
   
 
   handleChange = (e) => {
+    console.log(e);
     this.setState({
           ...this.state.info,
           [e.target.name]: e.target.value,
     });
   };
 
+  editEducation = (e, obj, edu) => {
+    e.preventDefault();
+  
+
+
+  }
+
   handleSubmit = (e) => {
     e.preventDefault();
-    this.setState({isSubmitted: true})
+    this.setState({
+      isSubmitted: true,
+      displayEdit: false,
+    })
 
   };
 
   displayEditView = (e) => {
     this.setState({
-      displayEdit: !this.state.displayEdit,
-      isSubmitted: !this.state.isSubmitted
+      displayEdit: true,
+      // isSubmitted: !this.state.isSubmitted
     })
     console.log('edit');
   }
@@ -67,17 +80,19 @@ class App extends Component {
     let content;
     let eduform;
     const isSubmitted = this.state.isSubmitted;
+    const displayEdit = this.state.displayEdit;
     if (this.state.education.length === 0)  {
-      eduform = <EduInfoForm addEducation={this.addEducation}/>
+      eduform = <EduInfoForm addEducation={this.addEducation} education={this.state.education} />
     } else {
-      eduform = <EducationForms addEducation={this.addEducation} state={this.state} newEduForm={this.newEduForm}/>
+      eduform = <EducationForms addEducation={this.addEducation} state={this.state} newEduForm={this.newEduForm} education={this.state.education}/>
 
     }
 
-    if (isSubmitted) {
+    if (isSubmitted && !displayEdit) {
       content = <Resume info={this.state} displayEditView={this.displayEditView}/>
-    }
-    else {
+    } else if (displayEdit) {
+      content = <EditResume info={this.state} handleChange={this.handleChange} handleSubmit={this.handleSubmit} editEducation ={this.editEducation}/>
+    } else {
       content = (
         <form onSubmit={this.handleSubmit}>
           <UserInfo handleChange={this.handleChange} info={this.state}/>

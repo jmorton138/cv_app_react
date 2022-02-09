@@ -20,7 +20,7 @@ class EducationForms extends Component {
     }
 
     if (this.props.state.renderEduForm === true) {
-        eduform = <EduInfoForm addEducation={this.props.addEducation}/>
+        eduform = <EduInfoForm addEducation={this.props.addEducation} education={this.props.education} />
         addform = <AddEduForm text={text} newEduForm={(e) => this.props.newEduForm(e)}/>
     } else {
         addform = <AddEduForm text={text} newEduForm={(e) => this.props.newEduForm(e)}/>
