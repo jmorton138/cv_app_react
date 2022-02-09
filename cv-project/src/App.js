@@ -6,7 +6,8 @@ import Resume from "./components/Resume";
 import './App.css'
 import uuid from 'uuid';
 import AddEduForm from "./components/AddEduForm";
-import Education from "./components/Education";
+import EducationForms from "./components/EducationForms";
+import EducationList from "./components/EducationList";
 
 class App extends Component {
   constructor() {
@@ -18,7 +19,7 @@ class App extends Component {
           education: [],
           experience: [],
           isSubmitted: false,
-          
+          renderEduForm: false,
 
     }
     
@@ -28,15 +29,19 @@ class App extends Component {
     e.preventDefault();
     this.setState({
       isSubmitted: false,
+      renderEduForm: false,
       education: [...this.state.education, obj]
     })
   }
 
+  newEduForm = (e) => {
+    e.preventDefault();
+    console.log(this.state.isSubmitted)
+    this.setState({ renderEduForm: !this.state.renderEduForm })
+}
   
 
   handleChange = (e) => {
-    console.log(this.state);
-
     this.setState({
           ...this.state.info,
           [e.target.name]: e.target.value,
@@ -60,7 +65,14 @@ class App extends Component {
 
   render() {
     let content;
+    let eduform;
     const isSubmitted = this.state.isSubmitted;
+    if (this.state.education.length === 0)  {
+      eduform = <EduInfoForm addEducation={this.addEducation}/>
+    } else {
+      eduform = <EducationForms addEducation={this.addEducation} state={this.state} newEduForm={this.newEduForm}/>
+
+    }
 
     if (isSubmitted) {
       content = <Resume info={this.state} displayEditView={this.displayEditView}/>
@@ -69,8 +81,8 @@ class App extends Component {
       content = (
         <form onSubmit={this.handleSubmit}>
           <UserInfo handleChange={this.handleChange} info={this.state}/>
-          <Education education={this.state.education} addEducation={this.addEducation} />
-          {/* <EduInfo addEducation={this.addEducation}/> */}
+          <EducationList education={this.state.education} />
+          {eduform}
 
 
           <div>

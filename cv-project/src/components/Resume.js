@@ -1,9 +1,13 @@
 import React, { Component } from 'react';
 import UserInfo from './UserInfo';
+import EduInfo from './EduInfo';
 
 export default class Resume extends Component {
   
     render() {
+        const education = this.props.info.education.map((edu) => {
+            return <EduInfo education={edu} />
+        });
     return (
         <div className="resume-container">
             <div className="field">
@@ -20,21 +24,8 @@ export default class Resume extends Component {
                 <label htmlFor="phone">Phone</label>
                 <div name="phone">{this.props.info.phone}</div>
             </div>
+            {education}
 
-            <div className="field">
-                <label htmlFor="schoolname">School Name</label>
-                <div name="schoolname">{this.props.info.school}</div>
-            </div>
-   
-            <div className="field">
-                <label htmlFor="major">Major</label>
-                <div name="major">{this.props.info.major}</div>
-            </div>
-
-            <div className="field">
-                <label htmlFor="schooldate">School Date</label>
-                <div name="schooldate">{this.props.info.schooldate}</div>
-            </div>
             <button onClick={this.props.displayEditView}>Edit</button>
         </div>
     );

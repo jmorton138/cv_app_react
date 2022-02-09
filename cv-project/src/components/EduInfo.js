@@ -3,8 +3,7 @@ import React, { Component } from 'react';
 class EduInfo extends Component {
   render() {
     return (
-        <div className='section-container'>
-
+        <div >
             <div className="field">
                 <label htmlFor="schoolname">School Name</label>
                 <div name="schoolname">{this.props.education.school}</div>
