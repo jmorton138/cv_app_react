@@ -67,6 +67,7 @@ class App extends Component {
 
   saveExpItem = (e, obj) => {
     e.preventDefault();
+    console.log(obj);
     const id = obj.id;
     let list = this.state.experience;
     let key = list[obj.id];
@@ -74,6 +75,7 @@ class App extends Component {
     this.setState({
       experience: list,
     })
+    console.log(this.state);
   }
 
   handleSubmit = (e) => {
@@ -109,7 +111,7 @@ class App extends Component {
     if (isSubmitted && !displayEdit) {
       content = <Resume info={this.state} displayEditView={this.displayEditView}/>
     } else if (displayEdit) {
-      content = <EditResume info={this.state} handleChange={this.handleChange} handleSubmit={this.handleSubmit} editEducation ={this.editEducation} />
+      content = <EditResume info={this.state} handleChange={this.handleChange} handleSubmit={this.handleSubmit} editEducation ={this.editEducation} saveExpItem={this.saveExpItem}/>
     } else {
       content = (
         <form onSubmit={this.handleSubmit}>

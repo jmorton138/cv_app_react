@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import SaveExperienceBtn from './SaveExperienceBtn';
 
-export class ExperienceItemForm extends Component {
+export class EditExperienceItemForm extends Component {
   constructor(props) {
     super(props)
     this.state = {
       position: '',
       company: '',
       startdate: '',
-      id: props.experience.length,
+      id: props.experience.id,
     }
 
 
@@ -47,4 +47,4 @@ export class ExperienceItemForm extends Component {
   }
 }
 
-export default ExperienceItemForm;
+export default EditExperienceItemForm;
