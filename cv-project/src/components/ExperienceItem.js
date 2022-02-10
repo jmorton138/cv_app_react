@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 
 class ExperienceItem extends Component {
   render() {
+      return (
         <div >
             <div className="field">
                 <label htmlFor="schoolname">Position</label>
@@ -18,6 +19,7 @@ class ExperienceItem extends Component {
                 <div name="schooldate">{this.props.item.startdate}</div>
             </div>
         </div>
+      )
   }
 }
 

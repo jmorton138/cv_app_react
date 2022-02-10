@@ -74,7 +74,6 @@ class App extends Component {
     this.setState({
       experience: list,
     })
-
   }
 
   handleSubmit = (e) => {

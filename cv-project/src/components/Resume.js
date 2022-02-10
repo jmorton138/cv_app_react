@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import UserInfo from './UserInfo';
 import EduInfo from './EduInfo';
+import ExperienceItemList from './ExperienceItemList';
 
 export default class Resume extends Component {
   
@@ -25,6 +26,7 @@ export default class Resume extends Component {
                 <div name="phone">{this.props.info.phone}</div>
             </div>
             {education}
+            <ExperienceItemList experience={this.props.info.experience} />
 
             <button onClick={this.props.displayEditView}>Edit</button>
         </div>

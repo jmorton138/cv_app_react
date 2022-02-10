@@ -3,14 +3,13 @@ import SaveExperienceBtn from './SaveExperienceBtn';
 
 export class ExperienceItemForm extends Component {
   state = {
-    position: '',
-    company: '',
-    startdate: '',
+    position: this.props.experience.position,
+    company: this.props.experience.school,
+    startdate: this.props.experience.startdate,
     id:  this.props.experience.length,
   }
   
   handleChange = (e) => {
-    console.log(this.state.id);
     this.setState(() => ({ 
         ...this.state,
         [e.target.name]: e.target.value,
