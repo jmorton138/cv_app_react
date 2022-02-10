@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 class AddEduForm extends Component {
   render() {
     return (
-    <div>
+    <div className='button-container'>
         <button onClick={(e) => this.props.newEduForm(e)}>Add</button>
     </div>
     )
