@@ -6,7 +6,11 @@ class EducationList extends Component {
     const education = this.props.education.map(edu => {
         return <EduInfo education={edu} />
     })
-    return <div>{education}</div>;
+    if (education.length !== 0) {
+      return <div className='section-container'>{education}</div>;
+    } else {
+      return <div></div>;
+    }
   }
 }
 
