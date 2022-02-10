@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import EduInfo from './EduInfo';
+
 class EducationList extends Component {
   render() {
 

@@ -9,6 +9,7 @@ import AddEduForm from "./components/AddEduForm";
 import EducationForms from "./components/EducationForms";
 import EducationList from "./components/EducationList";
 import EditResume from "./components/EditResume";
+import ExperienceForms from "./components/ExperienceForms";
 
 class App extends Component {
   constructor() {
@@ -22,6 +23,7 @@ class App extends Component {
           isSubmitted: false,
           displayEdit: false,
           renderEduForm: false,
+          renderExpForm: false,
 
     }
     
@@ -40,8 +42,14 @@ class App extends Component {
     e.preventDefault();
     console.log(this.state.isSubmitted)
     this.setState({ renderEduForm: !this.state.renderEduForm })
-}
-  
+  } 
+
+  renderNewExpForm = (e) => {
+    e.preventDefault();
+    this.setState({ renderExpForm: !this.state.renderExpForm })
+
+  }
+
 
   handleChange = (e) => {
     console.log(e);
@@ -74,6 +82,7 @@ class App extends Component {
     list[id] = obj;
     this.setState({
       experience: list,
+      renderExpForm: !this.state.renderExpForm, 
     })
     console.log(this.state);
   }
@@ -99,13 +108,19 @@ class App extends Component {
   render() {
     let content;
     let eduform;
+    let expform;
     const isSubmitted = this.state.isSubmitted;
     const displayEdit = this.state.displayEdit;
     if (this.state.education.length === 0)  {
       eduform = <EduInfoForm addEducation={this.addEducation} education={this.state.education} />
     } else {
       eduform = <EducationForms addEducation={this.addEducation} state={this.state} newEduForm={this.newEduForm} education={this.state.education}/>
+    }
 
+    if (this.state.experience.length === 0) {
+      expform = <ExperienceItemForm experience={this.state.experience} saveExpItem={this.saveExpItem} />
+    } else {
+      expform = <ExperienceForms state={this.state} renderNewEduForm={this.renderNewEduForm} experience={this.state.experience}/>
     }
 
     if (isSubmitted && !displayEdit) {
@@ -118,7 +133,7 @@ class App extends Component {
           <UserInfo handleChange={this.handleChange} info={this.state}/>
           <EducationList education={this.state.education} />
           {eduform}
-          <ExperienceItemForm experience={this.state.experience} saveExpItem={this.saveExpItem} />
+          {expform}
           <div className="button-container">
             <input type="submit"></input>
           </div>
