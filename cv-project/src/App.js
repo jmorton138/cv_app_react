@@ -1,7 +1,7 @@
 import React, {Component} from "react";
 import UserInfo from './components/UserInfo';
 import EduInfoForm from "./components/EduInfoForm";
-import Experience from "./components/Experience";
+import ExperienceItemForm from "./components/ExperienceItemForm";
 import Resume from "./components/Resume";
 import './App.css'
 import uuid from 'uuid';
@@ -62,8 +62,18 @@ class App extends Component {
     })
     console.log(this.state);
 
-  
+  }
 
+
+  saveExpItem = (e, obj) => {
+    e.preventDefault();
+    const id = obj.id;
+    let list = this.state.experience;
+    let key = list[obj.id];
+    list[id] = obj;
+    this.setState({
+      experience: list,
+    })
 
   }
 
@@ -107,8 +117,7 @@ class App extends Component {
           <UserInfo handleChange={this.handleChange} info={this.state}/>
           <EducationList education={this.state.education} />
           {eduform}
-
-
+          <ExperienceItemForm experience={this.state.experience} saveExpItem={this.saveExpItem} />
           <div className="button-container">
             <input type="submit"></input>
           </div>

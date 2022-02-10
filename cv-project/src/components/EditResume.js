@@ -17,8 +17,8 @@ class EditResume extends Component {
               <UserInfo handleChange={this.props.handleChange} info={this.props.info} />
               {eduinfoforms}
               <div className="button-container">
-            <input type="submit"></input>
-          </div>
+                <input type="submit"></input>
+              </div>
             </form>
         </div>
     )
