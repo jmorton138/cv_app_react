@@ -128,6 +128,7 @@ class App extends Component {
       content = <EditResume info={this.state} handleChange={this.handleChange} handleSubmit={this.handleSubmit} editEducation ={this.editEducation} saveExpItem={this.saveExpItem}/>
     } else {
       content = (
+
         <form onSubmit={this.handleSubmit}>
           <UserInfo handleChange={this.handleChange} info={this.state}/>
           <EducationList education={this.state.education} />
