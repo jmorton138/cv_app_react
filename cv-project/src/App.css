@@ -60,18 +60,36 @@
   margin-top: 100px;
   width: 50%;
   box-shadow: 5px 5px 20px silver;
+}
 
+.resume-section {
+  border-top: 1px solid grey;
+  
 }
 
 button, input[type="submit"] {
   padding: 15px;
   background-color: blue;
-  border: none;
+  border: blue 1px solid;
   color: white;
   font-size: 20px;
-  width: 50%;
+  width: 69%;
   margin: auto;
+  margin-bottom: 15px;
 }
 .button-container {
   display: grid;
+}
+
+button:hover {
+  background-color: white;
+  border: blue 1px solid;
+  color: blue;
+}
+
+input[type="submit"]:hover {
+  background-color: white;
+  border: blue 1px solid;
+  color: blue;
+
 }

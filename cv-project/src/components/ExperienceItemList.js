@@ -8,7 +8,7 @@ class ExperienceItemList extends Component {
             return <ExperienceItem item={item} />
         })
         if (experience.length !== 0) {
-          return <div>{experience}</div>;
+          return <div className='section-container'>{experience}</div>;
         } else {
           return <div></div>;
         }

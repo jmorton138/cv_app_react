@@ -2,13 +2,25 @@ import React, { Component } from 'react';
 import UserInfo from './UserInfo';
 import EduInfo from './EduInfo';
 import ExperienceItemList from './ExperienceItemList';
-
+import ExperienceItem from './ExperienceItem';
 export default class Resume extends Component {
   
     render() {
         const education = this.props.info.education.map((edu) => {
-            return <EduInfo education={edu} />
+            return (
+            <div className='resume-section'>
+                <EduInfo education={edu} />
+            </div>
+            )
         });
+        const experience = this.props.info.experience.map(item => {
+            return (
+                <div className='resume-section'>
+                    <ExperienceItem item={item} />
+                </div>
+            )
+            
+        })
     return (
         <div className="resume-container">
             <div className="field">
@@ -26,8 +38,7 @@ export default class Resume extends Component {
                 <div name="phone">{this.props.info.phone}</div>
             </div>
             {education}
-            <ExperienceItemList experience={this.props.info.experience} />
-
+            {experience}
             <button onClick={this.props.displayEditView}>Edit</button>
         </div>
     );
