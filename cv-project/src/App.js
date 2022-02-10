@@ -10,6 +10,7 @@ import EducationForms from "./components/EducationForms";
 import EducationList from "./components/EducationList";
 import EditResume from "./components/EditResume";
 import ExperienceForms from "./components/ExperienceForms";
+import ExperienceItemList from "./components/ExperienceItemList";
 
 class App extends Component {
   constructor() {
@@ -68,23 +69,21 @@ class App extends Component {
     this.setState({
       education: list,
     })
-    console.log(this.state);
 
   }
 
 
   saveExpItem = (e, obj) => {
     e.preventDefault();
-    console.log(obj);
     const id = obj.id;
     let list = this.state.experience;
     let key = list[obj.id];
     list[id] = obj;
     this.setState({
       experience: list,
-      renderExpForm: !this.state.renderExpForm, 
+      isSubmitted: false,
+      renderExpForm: false,
     })
-    console.log(this.state);
   }
 
   handleSubmit = (e) => {
@@ -120,7 +119,7 @@ class App extends Component {
     if (this.state.experience.length === 0) {
       expform = <ExperienceItemForm experience={this.state.experience} saveExpItem={this.saveExpItem} />
     } else {
-      expform = <ExperienceForms state={this.state} renderNewEduForm={this.renderNewEduForm} experience={this.state.experience}/>
+      expform = <ExperienceForms state={this.state} renderNewExpForm={this.renderNewExpForm} experience={this.state.experience} saveExpItem={this.saveExpItem}/>
     }
 
     if (isSubmitted && !displayEdit) {
@@ -133,6 +132,7 @@ class App extends Component {
           <UserInfo handleChange={this.handleChange} info={this.state}/>
           <EducationList education={this.state.education} />
           {eduform}
+          <ExperienceItemList experience={this.state.experience} />
           {expform}
           <div className="button-container">
             <input type="submit"></input>
