@@ -1,25 +1,23 @@
-import React, { Component } from 'react'
+import React from 'react'
 import ExperienceItemForm from './ExperienceItemForm';
 import RenderNewExpForm from './RenderNewExpForm';
 
-class ExperienceForms extends Component {
-  render() {
+const ExperienceForms = props => {
     let addform;
     let expform;
     let text;
 
-    if (this.props.state.renderExpForm === false) {
+    if (props.state.renderExpForm === false) {
       text = "Add new experience";
     } else {
-      console.log(this.props.state)
       text = "Cancel new experience";
     }
 
-    if (this.props.state.renderExpForm === true) {
-        expform = <ExperienceItemForm  experience={this.props.experience} saveExpItem={this.props.saveExpItem}/>
-        addform = <RenderNewExpForm text={text} renderNewExpForm={this.props.renderNewExpForm}/>
+    if (props.state.renderExpForm === true) {
+        expform = <ExperienceItemForm  experience={props.experience} saveExpItem={props.saveExpItem}/>
+        addform = <RenderNewExpForm text={text} renderNewExpForm={props.renderNewExpForm}/>
     } else {
-        addform = <RenderNewExpForm text={text} renderNewExpForm={this.props.renderNewExpForm}/>
+        addform = <RenderNewExpForm text={text} renderNewExpForm={props.renderNewExpForm}/>
 
     }
     return (
@@ -28,7 +26,7 @@ class ExperienceForms extends Component {
           {addform}
       </div>
     )
-  }
+
 }
 
 export default ExperienceForms
