@@ -1,26 +1,24 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-class ExperienceItem extends Component {
-  render() {
+const ExperienceItem = props => {
       return (
         <div >
             <div className="field">
                 <label htmlFor="schoolname">Position</label>
-                <div name="schoolname">{this.props.item.position}</div>
+                <div name="schoolname">{props.item.position}</div>
             </div>
 
             <div className="field">
                 <label htmlFor="major">Company</label>
-                <div name="major">{this.props.item.company}</div>
+                <div name="major">{props.item.company}</div>
             </div>
 
             <div className="field">
                 <label htmlFor="schooldate">Start date</label>
-                <div name="schooldate">{this.props.item.startdate}</div>
+                <div name="schooldate">{props.item.startdate}</div>
             </div>
         </div>
       )
-  }
 }
 
 export default ExperienceItem;
