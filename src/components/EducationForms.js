@@ -1,29 +1,25 @@
-import React, { Component } from 'react';
+import React from 'react';
 import EduInfoForm from './EduInfoForm';
 import AddEduForm from './AddEduForm';
 import EduInfo from './EduInfo';
 
-class EducationForms extends Component {
+const EducationForms =  props => {
 
-
-  render() {
     let eduform;
     let addform;
     let text;
 
-
-
-    if (this.props.state.renderEduForm === false) {
+    if (props.state.renderEduForm === false) {
         text = "Add new education";
     } else {
         text = "Cancel new education";
     }
 
-    if (this.props.state.renderEduForm === true) {
-        eduform = <EduInfoForm addEducation={this.props.addEducation} education={this.props.education} />
-        addform = <AddEduForm text={text} newEduForm={(e) => this.props.newEduForm(e)}/>
+    if (props.state.renderEduForm === true) {
+        eduform = <EduInfoForm addEducation={props.addEducation} education={props.education} />
+        addform = <AddEduForm text={text} newEduForm={(e) => props.newEduForm(e)}/>
     } else {
-        addform = <AddEduForm text={text} newEduForm={(e) => this.props.newEduForm(e)}/>
+        addform = <AddEduForm text={text} newEduForm={(e) => props.newEduForm(e)}/>
 
     }
 
@@ -35,7 +31,6 @@ class EducationForms extends Component {
 
         </div>
     );
-  }
 }
 
 export default EducationForms;
