@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 import EduInfo from './EduInfo';
 
-class EducationList extends Component {
-  render() {
+const EducationList = props => {
 
-    const education = this.props.education.map(edu => {
+    const education = props.education.map(edu => {
         return <EduInfo education={edu} />
     })
     if (education.length !== 0) {
@@ -12,7 +11,7 @@ class EducationList extends Component {
     } else {
       return <div></div>;
     }
-  }
+
 }
 
 export default EducationList;
