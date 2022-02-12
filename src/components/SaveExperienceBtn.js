@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
+import React from 'react';
 
 const SaveExperienceBtn = props => {
-      const obj = props.obj;
+    const obj = props.obj;
     return (
             <button onClick={(e) => props.saveExpItem(e, obj)}>Save</button>
     )

@@ -1,10 +1,9 @@
-import React, { Component } from 'react';
+import React from 'react';
 import ExperienceItem from './ExperienceItem';
 
 
-class ExperienceItemList extends Component {
-  render() {
-        const experience = this.props.experience.map(item => {
+const ExperienceItemList = props =>  {
+        const experience = props.experience.map(item => {
             return <ExperienceItem item={item} />
         })
         if (experience.length !== 0) {
@@ -13,7 +12,6 @@ class ExperienceItemList extends Component {
           return <div></div>;
         }
     
-  }
 }
 
 export default ExperienceItemList;

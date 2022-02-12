@@ -1,13 +1,12 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-class RenderNewExpForm extends Component {
-  render() {
+const RenderNewExpForm = props => {
+
     return (
         <div className='button-container'>
-            <button onClick={(e) => this.props.renderNewExpForm(e)}>{this.props.text}</button>
+            <button onClick={(e) => props.renderNewExpForm(e)}>{props.text}</button>
         </div>
     )
-  }
 }
 
 export default RenderNewExpForm;
