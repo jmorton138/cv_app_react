@@ -1,40 +1,35 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect } from 'react';
 
-class EditEduForm extends Component {
-    state = {
-        school: this.props.education.school,
-        major: this.props.education.major,
-        startdate: this.props.education.startdate,
-        id: this.props.education.id,
-    }
+const EditEduForm = props => {
 
-    handleChange = (e) => {
-        this.setState(() => ({ 
-            ...this.state,
-            [e.target.name]: e.target.value,
-        }))
-    }
+    const [school, setSchool] = useState(props.education.school);
+    const [major, setMajor] = useState(props.education.major);
+    const [startdate, setStartdate] = useState(props.education.startdate);
+    const [id, setID] = useState(props.education.id);
+    const [state, setState] = useState({ school, major, startdate, id });
 
-    render() {
+    useEffect(() => {
+        setState({ school, major, startdate, id })
+    })
+
         return (
             <div className="section-container">
                 <div className="field">
                     <label htmlFor="schoolNameInput">School Name</label>
-                    <input type="text" id="schoolNameInput" onChange={this.handleChange} name="school" value={this.state.school} />
+                    <input type="text" id="schoolNameInput" onChange={(e) => setSchool(e.target.value)} name="school" defaultValue={school} />
                 </div>
                 <div className="field">
                     <label htmlFor="majorInput">Area of Study</label>
-                    <input type="text" id="majorInput" onChange={this.handleChange} name="major" value={this.state.major} />
+                    <input type="text" id="majorInput" onChange={(e) => setMajor(e.target.value)} name="major" defaultValue={major} />
                 </div>
                 <div className="field">
                     <label htmlFor="dateStudyInput">Date of Study</label>
-                    <input type="date" id="dateStudyInput" onChange={this.handleChange} name="startdate" value={this.state.startdate} />
+                    <input type="date" id="dateStudyInput" onChange={(e) => setStartdate(e.target.value)} name="startdate" defaultValue={startdate} />
                 </div>
-                <button onClick={(e) => this.props.editEducation(e, this.state)}>Save</button>
+                <button onClick={(e) => props.editEducation(e, state)}>Save</button>
                 
             </div>
         )
-    }
 }
 
 export default EditEduForm;
