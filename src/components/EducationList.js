@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import EduInfo from './EduInfo';
 
 const EducationList = props => {

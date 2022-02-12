@@ -7,20 +7,20 @@ import AddEduForm from './AddEduForm';
 import ExperienceItemForm from './ExperienceItemForm';
 import EditExperienceItemForm from './EditExperienceItemForm';
 
-class EditResume extends Component {
-  render() {
-    const eduinfoforms = this.props.info.education.map((edu) => {
-      return <EditEduForm education={edu} handleChange={this.props.handleChange} editEducation={this.props.editEducation}/>
+const EditResume = props => {
+
+    const eduinfoforms = props.info.education.map((edu) => {
+      return <EditEduForm education={edu} handleChange={props.handleChange} editEducation={props.editEducation}/>
       
     });
-    const expitemforms = this.props.info.experience.map((exp) => {
-      return <EditExperienceItemForm experience={exp} saveExpItem={this.props.saveExpItem}/>
+    const expitemforms = props.info.experience.map((exp) => {
+      return <EditExperienceItemForm experience={exp} saveExpItem={props.saveExpItem}/>
     });
 
     return (
         <div>
-            <form onSubmit={this.props.handleSubmit}>
-              <UserInfo handleChange={this.props.handleChange} info={this.props.info} />
+            <form onSubmit={props.handleSubmit}>
+              <UserInfo handleChange={props.handleChange} info={props.info} />
               {eduinfoforms}
               {expitemforms}
               <div className="button-container">
@@ -30,6 +30,6 @@ class EditResume extends Component {
         </div>
     )
   }
-}
+
 
 export default EditResume;
