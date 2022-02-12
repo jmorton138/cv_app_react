@@ -1,50 +1,34 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect } from 'react';
 import SaveExperienceBtn from './SaveExperienceBtn';
 
-export class ExperienceItemForm extends Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      position: '',
-      company: '',
-      startdate: '',
-      id: props.experience.length,
-    }
+const ExperienceItemForm = props => {
+  const [position, setPosition] = useState('');
+  const [company, setCompany] = useState('');
+  const [startdate, setStartdate] = useState('');
+  const [id, setID] = useState(props.experience.length);
+  const [state, setState] = useState({ position, company, startdate, id });
 
 
-  }
-
-  
-  
-  handleChange = (e) => {
-    this.setState(() => ({ 
-        ...this.state,
-        [e.target.name]: e.target.value,
-    }))
-
-}
-
-  render() {
     return (
         <div className="section-container">
-        <div className="field">
-            <label htmlFor="position">Postion</label>
-            <input type="text" onChange={this.handleChange}  id="positionInput" name="position" defaultValue={this.props.experience.position}></input>
-        </div>
+          <div className="field">
+              <label htmlFor="position">Postion</label>
+              <input type="text" onChange={(e) => {setState({...state, position: e.target.value})}}  id="positionInput" name="position" defaultValue={props.experience.position}></input>
+          </div>
 
-        <div className="field">
-            <label htmlFor="companyInput">Company</label>
-            <input type="text" onChange={this.handleChange}  id="companyInput" name="company" defaultValue={this.props.experience.company}></input>
-        </div>
+          <div className="field">
+              <label htmlFor="companyInput">Company</label>
+              <input type="text" onChange={(e) => {setState({...state, company: e.target.value})}}  id="companyInput" name="company" defaultValue={props.experience.company}></input>
+          </div>
 
-        <div className="field">
-            <label htmlFor="dateWorkInput">Start Date</label>
-            <input type="date" onChange={this.handleChange} id="dateWorkInput" name="workdate" defaultValue={this.props.experience.startdate}></input>
-        </div>
-        <SaveExperienceBtn obj={this.state} saveExpItem={this.props.saveExpItem} />
+          <div className="field">
+              <label htmlFor="dateWorkInput">Start Date</label>
+              <input type="date" onChange={(e) => {setState({...state, startdate: e.target.value})}} id="dateWorkInput" name="workdate" defaultValue={props.experience.startdate}></input>
+          </div>
+
+          <SaveExperienceBtn obj={state} saveExpItem={props.saveExpItem} />
     </div>
     );
-  }
 }
 
 export default ExperienceItemForm;

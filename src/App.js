@@ -75,6 +75,7 @@ class App extends Component {
 
   saveExpItem = (e, obj) => {
     e.preventDefault();
+    console.log(obj)
     const id = obj.id;
     let list = this.state.experience;
     let key = list[obj.id];

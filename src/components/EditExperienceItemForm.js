@@ -9,26 +9,24 @@ const EditExperienceItemForm = props => {
   const [id, setID] = useState(props.experience.id)
   const [state, setState] = useState({ position, company, startdate, id });
 
-  useEffect(() => {
-    setState({ position, company, startdate, id })
-  })
+
 
 
     return (
         <div className="section-container">
         <div className="field">
             <label htmlFor="position">Postion</label>
-            <input type="text" onChange={(e) => setPosition(e.target.value)}  id="positionInput" name="position" defaultValue={props.experience.position}></input>
+            <input type="text" onChange={(e) => {setState({...state, position: e.target.value})}}  id="positionInput" name="position" defaultValue={props.experience.position}></input>
         </div>
 
         <div className="field">
             <label htmlFor="companyInput">Company</label>
-            <input type="text" onChange={(e) => setCompany(e.target.value)}  id="companyInput" name="company" defaultValue={props.experience.company}></input>
+            <input type="text" onChange={(e) => {setState({...state, company: e.target.value})}}  id="companyInput" name="company" defaultValue={props.experience.company}></input>
         </div>
 
         <div className="field">
             <label htmlFor="dateWorkInput">Start Date</label>
-            <input type="date" onChange={(e) => setStartdate(e.target.value)} id="dateWorkInput" name="workdate" defaultValue={props.experience.startdate}></input>
+            <input type="date" onChange={(e) => {setState({...state, startdate: e.target.value})}} id="dateWorkInput" name="workdate" defaultValue={props.experience.startdate}></input>
         </div>
         <SaveExperienceBtn obj={state} saveExpItem={props.saveExpItem} />
     </div>

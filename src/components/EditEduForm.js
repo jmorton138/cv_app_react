@@ -8,23 +8,21 @@ const EditEduForm = props => {
     const [id, setID] = useState(props.education.id);
     const [state, setState] = useState({ school, major, startdate, id });
 
-    useEffect(() => {
-        setState({ school, major, startdate, id })
-    })
+ 
 
         return (
             <div className="section-container">
                 <div className="field">
                     <label htmlFor="schoolNameInput">School Name</label>
-                    <input type="text" id="schoolNameInput" onChange={(e) => setSchool(e.target.value)} name="school" defaultValue={school} />
+                    <input type="text" id="schoolNameInput" onChange={(e) => {setState({...state, school: e.target.value})}} name="school" defaultValue={school} />
                 </div>
                 <div className="field">
                     <label htmlFor="majorInput">Area of Study</label>
-                    <input type="text" id="majorInput" onChange={(e) => setMajor(e.target.value)} name="major" defaultValue={major} />
+                    <input type="text" id="majorInput" onChange={(e) => {setState({...state, major: e.target.value})}} name="major" defaultValue={major} />
                 </div>
                 <div className="field">
                     <label htmlFor="dateStudyInput">Date of Study</label>
-                    <input type="date" id="dateStudyInput" onChange={(e) => setStartdate(e.target.value)} name="startdate" defaultValue={startdate} />
+                    <input type="date" id="dateStudyInput" onChange={(e) => {setState({...state, startdate: e.target.value})}} name="startdate" defaultValue={startdate} />
                 </div>
                 <button onClick={(e) => props.editEducation(e, state)}>Save</button>
                 
