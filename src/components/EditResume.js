@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import EducationForms from './EducationForms';
 import UserInfo from './UserInfo';
 import EduInfoForm from './EduInfoForm';
