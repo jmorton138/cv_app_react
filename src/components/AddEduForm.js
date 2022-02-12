@@ -1,13 +1,11 @@
 import React, { Component } from 'react';
 
-class AddEduForm extends Component {
-  render() {
+const AddEduForm = props => {
     return (
     <div className='button-container'>
-        <button onClick={(e) => this.props.newEduForm(e)}>{this.props.text}</button>
+        <button onClick={(e) => props.newEduForm(e)}>{props.text}</button>
     </div>
     )
-  }
 }
 
 export default AddEduForm;
