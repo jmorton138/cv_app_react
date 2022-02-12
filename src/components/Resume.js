@@ -1,19 +1,19 @@
-import React, { Component } from 'react';
+import React from 'react';
 import UserInfo from './UserInfo';
 import EduInfo from './EduInfo';
 import ExperienceItemList from './ExperienceItemList';
 import ExperienceItem from './ExperienceItem';
-export default class Resume extends Component {
-  
-    render() {
-        const education = this.props.info.education.map((edu) => {
+
+const Resume = props => {
+
+        const education = props.info.education.map((edu) => {
             return (
             <div className='resume-section'>
                 <EduInfo education={edu} />
             </div>
             )
         });
-        const experience = this.props.info.experience.map(item => {
+        const experience = props.info.experience.map(item => {
             return (
                 <div className='resume-section'>
                     <ExperienceItem item={item} />
@@ -25,22 +25,23 @@ export default class Resume extends Component {
         <div className="resume-container">
             <div className="field">
                 <label htmlFor="name">Name</label>
-                <div name="name">{this.props.info.name}</div>
+                <div name="name">{props.info.name}</div>
             </div>
    
             <div className="field">
                 <label htmlFor="email">Email</label>
-                <div name="email">{this.props.info.email}</div>
+                <div name="email">{props.info.email}</div>
             </div>
 
             <div className="field">
                 <label htmlFor="phone">Phone</label>
-                <div name="phone">{this.props.info.phone}</div>
+                <div name="phone">{props.info.phone}</div>
             </div>
             {education}
             {experience}
-            <button onClick={this.props.displayEditView}>Edit</button>
+            <button onClick={props.displayEditView}>Edit</button>
         </div>
     );
-  }
 }
+
+export default Resume;
