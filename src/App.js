@@ -13,18 +13,6 @@ import ExperienceForms from "./components/ExperienceForms";
 import ExperienceItemList from "./components/ExperienceItemList";
 
 const App = () => {
-// state = {
-//           name: '',
-//           email: '',
-//           phone: '',
-//           education: [],
-//           experience: [],
-//           isSubmitted: false,
-//           displayEdit: false,
-//           renderEduForm: false,
-//           renderExpForm: false,
-
-//     }
 
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
