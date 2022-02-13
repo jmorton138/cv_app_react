@@ -1,4 +1,4 @@
-import React, {Component} from "react";
+import React, { useState } from "react";
 import UserInfo from './components/UserInfo';
 import EduInfoForm from "./components/EduInfoForm";
 import ExperienceItemForm from "./components/ExperienceItemForm";
@@ -12,129 +12,121 @@ import EditResume from "./components/EditResume";
 import ExperienceForms from "./components/ExperienceForms";
 import ExperienceItemList from "./components/ExperienceItemList";
 
-class App extends Component {
-  constructor() {
-    super()
-    this.state = {
-          name: '',
-          email: '',
-          phone: '',
-          education: [],
-          experience: [],
-          isSubmitted: false,
-          displayEdit: false,
-          renderEduForm: false,
-          renderExpForm: false,
+const App = () => {
+// state = {
+//           name: '',
+//           email: '',
+//           phone: '',
+//           education: [],
+//           experience: [],
+//           isSubmitted: false,
+//           displayEdit: false,
+//           renderEduForm: false,
+//           renderExpForm: false,
 
-    }
+//     }
+
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [education, setEducation] = useState([]);
+  const [experience, setExperience] = useState([]);
+  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [displayEdit, setDisplayEdit] = useState(false);
+  const [renderEduForm, setRenderEduForm] = useState(false);
+  const [renderExpForm, setRenderExpForm] = useState(false);
+  const [state, setState] = useState({ name, email, education, experience, isSubmitted, displayEdit, renderEduForm, renderExpForm })
     
-}
 
-  addEducation = (e, obj) => {
+  const addEducation = (e, obj) => {
     e.preventDefault();
-    this.setState({
-      isSubmitted: false,
-      renderEduForm: false,
-      education: [...this.state.education, obj]
-    })
+    setIsSubmitted(false);
+    setRenderEduForm(false);
+    setEducation([...education, obj])
   }
 
-  newEduForm = (e) => {
+  const newEduForm = (e) => {
     e.preventDefault();
-    console.log(this.state.isSubmitted)
-    this.setState({ renderEduForm: !this.state.renderEduForm })
+    setRenderEduForm(!renderEduForm)
   } 
 
-  renderNewExpForm = (e) => {
+  const renderNewExpForm = (e) => {
     e.preventDefault();
-    this.setState({ renderExpForm: !this.state.renderExpForm })
+    setRenderExpForm(!renderExpForm)
 
   }
 
 
-  handleChange = (e) => {
-    console.log(e);
-    this.setState({
-          ...this.state.info,
-          [e.target.name]: e.target.value,
-    });
+  const handleChange = (e) => {
+    setState({...state, [e.target.name]: e.target.value})
   };
 
-  editEducation = (e, obj) => {
+  const editEducation = (e, obj) => {
     e.preventDefault();
     const id = obj.id;
-    let list = this.state.education;
+    let list = education;
     let key = list[obj.id];
     list[id] = obj;
-    this.setState({
-      education: list,
-    })
+    setEducation(list)
+ 
 
   }
 
 
-  saveExpItem = (e, obj) => {
+  const saveExpItem = (e, obj) => {
     e.preventDefault();
-    console.log(obj)
     const id = obj.id;
-    let list = this.state.experience;
+    let list = experience;
     let key = list[obj.id];
     list[id] = obj;
-    this.setState({
-      experience: list,
-      isSubmitted: false,
-      renderExpForm: false,
-    })
+    setExperience(list);
+    setIsSubmitted(false);
+    setRenderExpForm(false);
   }
 
-  handleSubmit = (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    this.setState({
-      isSubmitted: true,
-      displayEdit: false,
-    })
+    setIsSubmitted(true);
+    setDisplayEdit(false);
+    setState({ name, email, education, experience, isSubmitted, displayEdit, renderEduForm, renderExpForm })
+ 
 
   };
 
-  displayEditView = (e) => {
-    this.setState({
-      displayEdit: true,
-      // isSubmitted: !this.state.isSubmitted
-    })
-    console.log('edit');
+  const displayEditView = (e) => {
+    setDisplayEdit(true);
+  
   }
 
 
-  render() {
     let content;
     let eduform;
     let expform;
-    const isSubmitted = this.state.isSubmitted;
-    const displayEdit = this.state.displayEdit;
-    if (this.state.education.length === 0)  {
-      eduform = <EduInfoForm addEducation={this.addEducation} education={this.state.education} />
+    const submitted = isSubmitted;
+    const displayEditPage = displayEdit;
+    if (education.length === 0)  {
+      eduform = <EduInfoForm addEducation={addEducation} education={education} />
     } else {
-      eduform = <EducationForms addEducation={this.addEducation} state={this.state} newEduForm={this.newEduForm} education={this.state.education}/>
+      eduform = <EducationForms addEducation={addEducation} state={state} newEduForm={newEduForm} education={education} renderEduForm={renderEduForm}/>
     }
 
-    if (this.state.experience.length === 0) {
-      expform = <ExperienceItemForm experience={this.state.experience} saveExpItem={this.saveExpItem} />
+    if (experience.length === 0) {
+      expform = <ExperienceItemForm experience={experience} saveExpItem={saveExpItem} />
     } else {
-      expform = <ExperienceForms state={this.state} renderNewExpForm={this.renderNewExpForm} experience={this.state.experience} saveExpItem={this.saveExpItem}/>
+      expform = <ExperienceForms state={state} renderNewExpForm={renderNewExpForm} experience={experience} saveExpItem={saveExpItem}/>
     }
 
-    if (isSubmitted && !displayEdit) {
-      content = <Resume info={this.state} displayEditView={this.displayEditView}/>
-    } else if (displayEdit) {
-      content = <EditResume info={this.state} handleChange={this.handleChange} handleSubmit={this.handleSubmit} editEducation ={this.editEducation} saveExpItem={this.saveExpItem}/>
+    if (submitted && !displayEditPage) {
+      content = <Resume info={state} displayEditView={displayEditView}/>
+    } else if (displayEditPage) {
+      content = <EditResume info={state} handleChange={handleChange} handleSubmit={handleSubmit} editEducation ={editEducation} saveExpItem={saveExpItem}/>
     } else {
       content = (
 
-        <form onSubmit={this.handleSubmit}>
-          <UserInfo handleChange={this.handleChange} info={this.state}/>
-          <EducationList education={this.state.education} />
+        <form onSubmit={handleSubmit}>
+          <UserInfo handleChange={handleChange} info={state}/>
+          <EducationList education={education} />
           {eduform}
-          <ExperienceItemList experience={this.state.experience} />
+          <ExperienceItemList experience={experience} />
           {expform}
           <div className="button-container">
             <input type="submit"></input>
@@ -148,7 +140,6 @@ class App extends Component {
       </div>
   
     );
-  }
 
 }
 

@@ -9,13 +9,13 @@ const EducationForms =  props => {
     let addform;
     let text;
 
-    if (props.state.renderEduForm === false) {
+    if (props.renderEduForm === false) {
         text = "Add new education";
     } else {
         text = "Cancel new education";
     }
-
-    if (props.state.renderEduForm === true) {
+    console.log(props)
+    if (props.renderEduForm === true) {
         eduform = <EduInfoForm addEducation={props.addEducation} education={props.education} />
         addform = <AddEduForm text={text} newEduForm={(e) => props.newEduForm(e)}/>
     } else {

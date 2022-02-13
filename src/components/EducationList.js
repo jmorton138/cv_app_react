@@ -3,7 +3,9 @@ import EduInfo from './EduInfo';
 
 const EducationList = props => {
 
-    const education = props.education.map(edu => {
+  const array = Array.from(props.education)
+
+    const education = array.map(edu => {
         return <EduInfo education={edu} />
     })
     if (education.length !== 0) {

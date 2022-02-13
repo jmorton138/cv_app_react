@@ -1,6 +1,7 @@
 import React from 'react';
 
 const EduInfo = props => {
+
     return (
         <div >
             <div className="field">
