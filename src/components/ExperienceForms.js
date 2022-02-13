@@ -7,13 +7,13 @@ const ExperienceForms = props => {
     let expform;
     let text;
 
-    if (props.state.renderExpForm === false) {
+    if (props.renderExpForm === false) {
       text = "Add new experience";
     } else {
       text = "Cancel new experience";
     }
 
-    if (props.state.renderExpForm === true) {
+    if (props.renderExpForm === true) {
         expform = <ExperienceItemForm  experience={props.experience} saveExpItem={props.saveExpItem}/>
         addform = <RenderNewExpForm text={text} renderNewExpForm={props.renderNewExpForm}/>
     } else {

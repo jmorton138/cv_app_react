@@ -52,7 +52,7 @@ const App = () => {
   const renderNewExpForm = (e) => {
     e.preventDefault();
     setRenderExpForm(!renderExpForm)
-
+    
   }
 
 
@@ -81,6 +81,9 @@ const App = () => {
     setExperience(list);
     setIsSubmitted(false);
     setRenderExpForm(false);
+    setState({ name, email, education, experience, isSubmitted, displayEdit, renderEduForm, renderExpForm })
+
+
   }
 
   const handleSubmit = (e) => {
@@ -110,9 +113,11 @@ const App = () => {
     }
 
     if (experience.length === 0) {
+
       expform = <ExperienceItemForm experience={experience} saveExpItem={saveExpItem} />
     } else {
-      expform = <ExperienceForms state={state} renderNewExpForm={renderNewExpForm} experience={experience} saveExpItem={saveExpItem}/>
+
+      expform = <ExperienceForms state={state} renderNewExpForm={renderNewExpForm} renderExpForm={renderExpForm} experience={experience} saveExpItem={saveExpItem}/>
     }
 
     if (submitted && !displayEditPage) {
